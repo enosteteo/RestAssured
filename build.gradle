@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+}
+
+group 'enosteteo'
+version '1.0-SNAPSHOT'
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 1.0
+            }
+        }
+    }
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation 'io.rest-assured:rest-assured:4.1.2'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+}
