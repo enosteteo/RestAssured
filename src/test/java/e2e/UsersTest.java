@@ -14,8 +14,8 @@ public class UsersTest {
 
     @Before
     public void setGlobalVar(){
-        urlBase = "";
-        token = "";
+        urlBase += "";
+        token += "";
     }
 
     @Test
