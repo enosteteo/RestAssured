@@ -11,6 +11,16 @@ import static e2e.CoreTests.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UsersTest {
+    
+     public JSONObject createUserJson(String currentPassword, String role, String name, String newPassword, String username) {
+        json = new JSONObject();
+        json.put("currentPassword", currentPassword);
+        json.put("idRole", role);
+        json.put("name", name);
+        json.put("newPassword", newPassword);
+        json.put("username", username);
+        return json;
+    }
 
     @Before
     public void setGlobalVar(){
@@ -25,15 +35,17 @@ public class UsersTest {
 
     @Test
     public void t2_postUsers(){
-        postJson = new JSONObject();
-        postJson.put("currentPassword", "test01");
-        postJson.put("idRole", "1");
-        postJson.put("name", "test01");
-        postJson.put("newPassword", "test01");
-        postJson.put("username", "testeBBB");
-
+        String name = "test01"
+        JSONObject postJson = createUserJson("test01", "1", name, "test01", "testttBBB");
         testPost(201, postJson);
-        testGet(200, "items.name", "test01");
+        
+//         postJson = new JSONObject();
+//         postJson.put("currentPassword", "test01");
+//         postJson.put("idRole", "1");
+//         postJson.put("name", "test01");
+//         postJson.put("newPassword", "test01");
+//         postJson.put("username", "testeBBB");
+        testGet(200, "items.name", name);
     }
 
     @Test
