@@ -1,19 +1,16 @@
 package e2e;
 
 import org.json.simple.JSONObject;
-import org.junit.Before;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 
-import static e2e.CoreTests.*;
+import static e2e.CoreTest.*;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UsersTest {
     
      public JSONObject createUserJson(String currentPassword, String role, String name, String newPassword, String username) {
-        json = new JSONObject();
+        JSONObject json = new JSONObject();
         json.put("currentPassword", currentPassword);
         json.put("idRole", role);
         json.put("name", name);
@@ -22,9 +19,9 @@ public class UsersTest {
         return json;
     }
 
-    @Before
+    @BeforeAll
     public void setGlobalVar(){
-        urlBase += "";
+        urlBase += "http://localhost:8080/";
         token += "";
     }
 
@@ -35,7 +32,7 @@ public class UsersTest {
 
     @Test
     public void t2_postUsers(){
-        String name = "test01"
+        String name = "test01";
         JSONObject postJson = createUserJson("test01", "1", name, "test01", "testttBBB");
         testPost(201, postJson);
         

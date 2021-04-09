@@ -5,7 +5,7 @@ import org.json.simple.JSONObject;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-public class CoreTests {
+public class CoreTest {
 
     protected static String token = "";
     protected static String urlBase = "";
